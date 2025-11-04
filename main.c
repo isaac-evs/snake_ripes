@@ -11,12 +11,17 @@ volatile int * DPadRight = (volatile int *)D_PAD_0_RIGHT;
 int main(){
     
     int rgb = 0;
+    volatile int * prevPos = LEDMat;
     
     while(1){
         
         
         rgb = *Switches;
         printf("RGB = %x\n", rgb);
+        
+        *prevPos = 0x00;
+        
+        prevPos = LEDMat;
         
         *LEDMat = 0x00;
         
